@@ -1,4 +1,5 @@
 TEMPDIR := $(shell mktemp -d)
+PWD := $(shell pwd)
 
 default: build
 
@@ -31,9 +32,10 @@ clean:
 
 lambda_build: build
 	[ ! -d build ] && mkdir build || true
-	-cp -r node_modules $(TEMPDIR)/node_modules
-	-cp -r dist/src/. $(TEMPDIR)/.
-	-zip -r build/$$(date +%y-%m-%d-%s).zip $(TEMPDIR)
+	-cp -r dist/. $(TEMPDIR)/.
+	-cp yarn.lock $(TEMPDIR)/.
+	-cd $(TEMPDIR) && yarn install --production
+	-cd $(TEMPDIR) && zip -r $(PWD)/build/$$(date +%y-%m-%d-%s).zip .
 	-rm -rf $(TEMPDIR)
 
 

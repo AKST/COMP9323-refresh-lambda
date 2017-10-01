@@ -2,7 +2,7 @@
     "name": "comp9323-refresh-lambda",
     "version": "1.0.0",
     "description": "A lambda task for refreshing",
-    "main": "app/app.js",
+    "main": "src/index.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/zakisaad/COMP9323-Group2-NodeBackend.git"
@@ -35,6 +35,7 @@
         "nodemon": "^1.12.0"
     },
     "dependencies": {
+        "babel-polyfill": "^6.23.0",
         "pg": "^7.3.0"
     }
 }
